@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>룰루랄라 한기쌤의 깊이 있는 학습 설계 전문가</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;800&display=swap');
+        body { font-family: 'Pretendard', sans-serif; background-color: #f8fafc; }
+        .hanki-gradient { background: linear-gradient(135deg, #0f172a 0%, #1e40af 100%); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .step-card { border-left: 4px solid #e2e8f0; transition: all 0.3s ease; }
+        .step-card:hover { border-left-color: #3b82f6; background-color: #f1f5f9; }
+        .badge { @apply px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider; }
+        .flow-line { @apply w-full h-8 flex justify-center items-center text-slate-300; }
+        .subject-tag { @apply px-2 py-0.5 rounded text-[10px] font-bold text-white; }
+        .lesson-step { @apply relative pl-8 border-l-2 border-dashed border-slate-200 pb-8; }
+        .lesson-step::before { content: ''; @apply absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow-sm; }
+        .concept-arrow { @apply flex items-center justify-center text-slate-400 my-2; }
+    </style>
+</head>
+<body class="text-slate-900">
+
+    <!-- Header -->
+    <header class="hanki-gradient text-white pt-12 pb-20 px-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <h1 class="text-3xl md:text-5xl font-extrabold mb-3 tracking-tight">깊이 있는 학습 <span class="text-blue-400">융합 설계 마스터</span></h1>
+                <p class="text-lg opacity-80 font-light italic">"성취기준의 사실을 넘어, 영속적 이해를 향한 개념 추출"</p>
+            </div>
+            <div class="flex gap-2">
+                <span class="bg-emerald-500/30 px-3 py-1 rounded-full text-xs">#개념추출프로세스</span>
+                <span class="bg-blue-500/30 px-3 py-1 rounded-full text-xs">#지식의구조</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 bg-white/90 backdrop-blur-md shadow-sm z-50 border-b border-slate-200">
+        <div class="max-w-6xl mx-auto flex overflow-x-auto scrollbar-hide">
+            <button onclick="openTab(event, 'home')" class="tab-link px-6 py-5 text-blue-600 border-b-2 border-blue-600 font-bold whitespace-nowrap">대시보드</button>
+            <button onclick="openTab(event, 'unpacking')" class="tab-link px-6 py-5 text-slate-500 hover:text-blue-600 font-medium whitespace-nowrap">1단계: 융합 성취기준 분석</button>
+            <button onclick="openTab(event, 'assessment')" class="tab-link px-6 py-5 text-slate-500 hover:text-blue-600 font-medium whitespace-nowrap">2단계: 융합 수행평가</button>
+            <button onclick="openTab(event, 'inquiry')" class="tab-link px-6 py-5 text-slate-500 hover:text-blue-600 font-medium whitespace-nowrap">3단계: 탐구 및 학습경험</button>
+            <button onclick="openTab(event, 'case-study')" class="tab-link px-6 py-5 text-slate-500 hover:text-blue-600 font-medium whitespace-nowrap underline decoration-blue-200 underline-offset-8">실제 사례</button>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-6 py-12">
+
+        <!-- Tab: Unpacking (개념 추출 과정 강화) -->
+        <div id="unpacking" class="tab-content active space-y-12">
+            <section class="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-xl border border-slate-100">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
+                    <div class="flex items-center gap-4">
+                        <span class="w-12 h-12 rounded-2xl hanki-gradient text-white flex items-center justify-center text-xl font-bold shadow-lg">1</span>
+                        <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">성취기준 분석 및 개념 추출</h2>
+                    </div>
+                </div>
+
+                <!-- Step 0: Full Text -->
+                <div class="bg-slate-900 text-white p-6 rounded-3xl mb-10">
+                    <h3 class="font-bold text-blue-400 mb-4 text-sm flex items-center gap-2">
+                        <i class="fas fa-file-alt"></i> 분석 대상 성취기준 원문
+                    </h3>
+                    <div class="space-y-3 text-[11px] opacity-90 leading-relaxed">
+                        <p><strong>[4과16-01]</strong> 기후변화 현상의 예를 알고, 기후변화가 인간의 활동과 관련되어 있음을 토의할 수 있다.</p>
+                        <p><strong>[4과16-02]</strong> 기후변화의 심각성에 관심을 가지고, 기후변화가 우리 생활과 환경에 미치는 영향을 설명할 수 있다.</p>
+                        <p><strong>[4도04-02]</strong> 인간이 자연과 함께 살아야 하는 이유를 이해하고, 공생을 위한 구체적인 실천 계획을 세우며 생태 감수성을 기른다.</p>
+                    </div>
+                </div>
+
+                <!-- Step 1: Unpacking Know/Do -->
+                <div class="step-card p-6 bg-slate-50 rounded-2xl mb-8">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="badge bg-blue-600 text-white">Step 01</span>
+                        <h3 class="font-bold text-lg">사실(Facts)과 기능(Skills)의 분리</h3>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="p-4 bg-white rounded-xl border border-slate-200">
+                            <h4 class="text-[10px] font-bold text-blue-500 mb-2 uppercase">📚 사실적 지식 (Know)</h4>
+                            <p class="text-sm font-semibold text-slate-700">기후변화 현상 사례, 인간 활동 사례, 자연과 공생해야 하는 이유</p>
+                        </div>
+                        <div class="p-4 bg-white rounded-xl border border-slate-200">
+                            <h4 class="text-[10px] font-bold text-emerald-500 mb-2 uppercase">🛠️ 필수 기능 (Do)</h4>
+                            <p class="text-sm font-semibold text-slate-700">설명하기, 토의하기, 실천 계획 세우기, 감수성 기르기</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concept-arrow"><i class="fas fa-chevron-down fa-2x"></i></div>
+
+                <!-- Step 2: Concept Extraction (NEW!) -->
+                <div class="step-card p-6 bg-indigo-50/50 rounded-2xl mb-8">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="badge bg-indigo-600 text-white">Step 02</span>
+                        <h3 class="font-bold text-lg">핵심 개념(Concepts) 추출 워크숍</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-6 italic">사실적 정보를 "시간을 초월하고 보편적인" 단어로 전환합니다.</p>
+                    
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-white p-5 rounded-2xl shadow-sm border border-indigo-100 flex flex-col items-center text-center">
+                            <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center mb-3">
+                                <i class="fas fa-microscope text-indigo-600"></i>
+                            </div>
+                            <h4 class="text-xs font-bold text-slate-400 mb-2 uppercase">사실(Fact)에서</h4>
+                            <p class="text-xs text-slate-500 leading-tight mb-3">폭염, 홍수, 이산화탄소, 자동차 운행...</p>
+                            <i class="fas fa-arrow-down text-indigo-300 mb-3"></i>
+                            <h4 class="text-xs font-bold text-indigo-600 mb-1 uppercase">개념(Concept)으로</h4>
+                            <p class="text-sm font-bold">기후 변화 / 인과관계</p>
+                        </div>
+                        
+                        <div class="bg-white p-5 rounded-2xl shadow-sm border border-indigo-100 flex flex-col items-center text-center">
+                            <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center mb-3">
+                                <i class="fas fa-users text-indigo-600"></i>
+                            </div>
+                            <h4 class="text-xs font-bold text-slate-400 mb-2 uppercase">사실(Fact)에서</h4>
+                            <p class="text-xs text-slate-500 leading-tight mb-3">쓰레기 줍기, 에어컨 줄이기, 공생 이유...</p>
+                            <i class="fas fa-arrow-down text-indigo-300 mb-3"></i>
+                            <h4 class="text-xs font-bold text-indigo-600 mb-1 uppercase">개념(Concept)으로</h4>
+                            <p class="text-sm font-bold">공생 / 책임</p>
+                        </div>
+
+                        <div class="bg-indigo-600 p-5 rounded-2xl shadow-xl flex flex-col items-center justify-center text-center text-white">
+                            <h4 class="text-[10px] font-bold text-indigo-200 mb-2 uppercase tracking-widest">Conceptual Lens</h4>
+                            <p class="text-2xl font-black mb-1">상호작용</p>
+                            <p class="text-[10px] opacity-70 leading-tight">단원을 꿰뚫는<br>가장 거대한 개념</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concept-arrow"><i class="fas fa-chevron-down fa-2x"></i></div>
+
+                <!-- Step 4: Generalization -->
+                <div class="step-card p-6 bg-emerald-50/30 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="badge bg-emerald-600 text-white">Step 04</span>
+                        <h3 class="font-bold text-lg">최종 일반화 (Generalization)</h3>
+                    </div>
+                    <div class="bg-emerald-900 text-white p-10 rounded-3xl shadow-2xl relative border-4 border-emerald-800">
+                        <p class="text-xl md:text-2xl font-bold leading-snug italic text-center">
+                            "인간 활동에 의한 <span class="text-emerald-300">기후 변화</span>는 생태계와 삶의 <span class="text-emerald-300">상호작용</span>에 중대한 영향을 미치며, 우리는 지속 가능한 <span class="text-emerald-300">공생</span>을 위해 개인적·사회적 <span class="text-white underline underline-offset-8">책임</span>을 다해야 한다."
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Tab: Assessment -->
+        <div id="assessment" class="tab-content space-y-12">
+            <section class="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-xl border border-slate-100">
+                <h2 class="text-3xl font-extrabold mb-8 text-slate-800 tracking-tight">2단계: 융합 GRASPS 수행과제</h2>
+                <div class="p-8 bg-blue-900 text-white rounded-3xl mb-8 relative overflow-hidden">
+                    <i class="fas fa-globe-asia text-9xl absolute -right-4 -bottom-4 opacity-10"></i>
+                    <h3 class="text-xl font-bold mb-6 text-blue-300">프로젝트: "지구와 나, 공생을 위한 기후 행동 리포트"</h3>
+                    <div class="grid md:grid-cols-2 gap-x-12 gap-y-4 text-sm font-light leading-relaxed">
+                        <p><strong>G (Goal):</strong> 기후 위기 사례를 과학적으로 분석하고, 공생을 위한 실천 계획이 담긴 보고서 작성 및 토의</p>
+                        <p><strong>R (Role):</strong> 마을 환경 정책 연구원 및 시민 활동가</p>
+                        <p><strong>A (Audience):</strong> 학교 환경 위원회, 지역 주민, 온라인 커뮤니티</p>
+                        <p><strong>S (Situation):</strong> 기후 변화의 심각성을 알리고 생활 속에서 변화를 이끌어내야 하는 시급한 상황</p>
+                        <p><strong>P (Product):</strong> [절차와 결과가 드러나는 조사 보고서] + [근거가 타당한 토의 기록]</p>
+                        <p><strong>S (Standard):</strong> 과학적 지식 활용, 토의 근거의 적절성, 실천 계획의 구체성, 보고서의 격식</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Tab: Inquiry -->
+        <div id="inquiry" class="tab-content space-y-12">
+            <section class="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-xl border border-slate-100">
+                <div class="flex items-center gap-4 mb-10">
+                    <span class="w-12 h-12 rounded-2xl hanki-gradient text-white flex items-center justify-center text-xl font-bold shadow-lg">3</span>
+                    <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">학습 경험 디자인 (WHERETO)</h2>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Lesson Step 1: Engage -->
+                    <div class="lesson-step">
+                        <div class="bg-emerald-50 p-6 rounded-2xl border border-emerald-100">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="font-bold text-xl text-emerald-800">Phase 1. 발견: 지구의 경고음 (Hook & Where)</h3>
+                                <span class="bg-emerald-200 text-emerald-800 text-[10px] px-2 py-1 rounded-full font-bold">1~2차시</span>
+                            </div>
+                            <p class="text-sm text-slate-700 mb-4 font-medium italic">"기후 변화는 남의 나라 이야기일까, 우리의 이야기일까?"</p>
+                            <div class="space-y-2 text-xs text-slate-600">
+                                <p>• 최근 1년간 우리 지역과 세계의 이상 기후 뉴스 헤드라인 모으기 <span class="subject-tag bg-emerald-500 ml-1">과학</span></p>
+                                <p>• 프로젝트 목표 공유 및 K-W-L 차트 작성 <span class="subject-tag bg-slate-500 ml-1">공통</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lesson Step 2: Investigate -->
+                    <div class="lesson-step">
+                        <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="font-bold text-xl text-blue-800">Phase 2. 탐구: 인과관계의 지도 (Equip & Explore)</h3>
+                                <span class="bg-blue-200 text-blue-800 text-[10px] px-2 py-1 rounded-full font-bold">3~6차시</span>
+                            </div>
+                            <p class="text-sm text-slate-700 mb-4 font-medium italic">"인간의 어떤 활동이 기후를 변화시킬까?"</p>
+                            <div class="space-y-2 text-xs text-slate-600">
+                                <p>• 화석 연료 사용과 탄소 배출 시뮬레이션 및 데이터 조사 <span class="subject-tag bg-emerald-500 ml-1">과학</span></p>
+                                <p>• 우리 생활 속 탄소 발자국 추적 및 근거 수집 방법 학습 <span class="subject-tag bg-blue-500 ml-1">국어</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lesson Step 3: Rethink & Organize -->
+                    <div class="lesson-step">
+                        <div class="bg-indigo-50 p-6 rounded-2xl border border-indigo-100">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="font-bold text-xl text-indigo-800">Phase 3. 구성: 공생의 논리 (Rethink & Organize)</h3>
+                                <span class="bg-indigo-200 text-indigo-800 text-[10px] px-2 py-1 rounded-full font-bold">7~8차시</span>
+                            </div>
+                            <p class="text-sm text-slate-700 mb-4 font-medium italic">"우리는 왜 자연과 공생해야 할까? 어떤 책임이 있을까?"</p>
+                            <div class="space-y-2 text-xs text-slate-600">
+                                <p>• '편리함 vs 환경' 가치 갈등 토의 및 근거 제시 <span class="subject-tag bg-amber-500 ml-1">도덕</span> <span class="subject-tag bg-blue-500 ml-1">국어</span></p>
+                                <p>• 조사 보고서 초안 작성 (원인-영향-대응 구조화) <span class="subject-tag bg-blue-500 ml-1">국어</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lesson Step 4: Act & Evaluate -->
+                    <div class="lesson-step">
+                        <div class="bg-amber-50 p-6 rounded-2xl border border-amber-100">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="font-bold text-xl text-amber-800">Phase 4. 전이: 책임 있는 실천 (Evaluate & Act)</h3>
+                                <span class="bg-amber-200 text-amber-800 text-[10px] px-2 py-1 rounded-full font-bold">9~10차시</span>
+                            </div>
+                            <p class="text-sm text-slate-700 mb-4 font-medium italic">"이제 우리는 무엇을 해야 할까? 삶으로의 전이"</p>
+                            <div class="space-y-2 text-xs text-slate-600">
+                                <p>• 기후 행동 보고서 발표회 및 상호 피드백 <span class="subject-tag bg-blue-500 ml-1">국어</span></p>
+                                <p>• 개인 및 가정의 '공생 실천 챌린지' 약속 및 배움 성찰 <span class="subject-tag bg-amber-500 ml-1">도덕</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Tab: Case Study -->
+        <div id="case-study" class="tab-content space-y-12">
+            <section class="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-xl border border-slate-100 text-center">
+                <h2 class="text-3xl font-extrabold mb-10 text-slate-800 tracking-tight">융합 설계 실천 사례</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto mb-8">
+                    이 워크북은 성취기준의 텍스트에서 멈추지 않고, 학생들이 평생 간직할 **'개념적 지혜'**로 나아가게 돕습니다.
+                </p>
+                <div class="inline-block bg-slate-900 text-white px-8 py-4 rounded-2xl font-bold">
+                    기후 변화 프로젝트 마스터 완료 🌟
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-16 px-6 mt-12">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <h2 class="text-white text-xl font-bold italic">룰루랄라 한기쌤의 깊이 있는 학습 연구소</h2>
+            <p class="text-[10px] opacity-40 uppercase tracking-widest">© 2026 Integrated Inquiry Design System</p>
+        </div>
+    </footer>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-link");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("text-blue-600", "border-b-2", "border-blue-600", "font-bold");
+                tablinks[i].classList.add("text-slate-500");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("text-blue-600", "border-b-2", "border-blue-600", "font-bold");
+            evt.currentTarget.classList.remove("text-slate-500");
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
